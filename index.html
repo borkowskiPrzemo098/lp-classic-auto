@@ -91,7 +91,7 @@ h1,h2,h3,h4{margin:0;text-wrap:balance}
 .hero::before{content:"";position:absolute;inset:0;z-index:-1;background:
   radial-gradient(circle at 1px 1px,rgba(255,255,255,.09) 1.2px,transparent 1.6px) 0 0/9px 9px}
 .hero__sun{position:absolute;z-index:-1;width:min(78vw,880px);aspect-ratio:1;right:-18%;top:-30%;border-radius:50%;background:var(--blue-deep);opacity:.55}
-.hero__in{display:grid;grid-template-columns:minmax(0,1.02fr) minmax(0,1fr);gap:clamp(28px,4vw,64px);align-items:center;padding:clamp(40px,6vw,84px) 0 clamp(56px,7vw,96px)}
+.hero__in{display:grid;grid-template-columns:minmax(0,1.02fr) minmax(0,1fr);gap:clamp(28px,4vw,64px);align-items:center;padding-top:clamp(40px,6vw,84px);padding-bottom:clamp(56px,7vw,96px)}
 .hero h1{font-size:clamp(3.1rem,7.4vw,6rem);margin:0 0 .3em}
 .hero h1 span{display:block}
 .hero h1 .y{color:var(--mustard)}
@@ -122,10 +122,12 @@ h1,h2,h3,h4{margin:0;text-wrap:balance}
 }
 @media (max-width:600px){
   .hero__in{padding-top:28px;gap:22px}
-  .hero__art{width:80%;margin:0 0 0 auto;padding-bottom:22%}
-  .hero__coin{left:-18%;bottom:0;width:56%}
-  .stamp{top:-14px;bottom:auto;right:2px;width:84px}
-  .stamp b{font-size:1.5rem}.stamp span{font-size:.6rem}
+  .hero__art{width:100%;max-width:400px;margin:0 auto;padding:0 6px 26% 14%}
+  .hero__label{transform:rotate(1.5deg)}
+  .hero__coin{left:-2%;bottom:0;width:54%}
+  .stamp{top:-12px;bottom:auto;right:-4px;width:78px;height:78px}
+  .stamp b{font-size:1.35rem}.stamp span{font-size:.56rem;letter-spacing:.06em}
+  .hero h1,.reg{text-shadow:.035em .025em 0 var(--red)}
   .hero h1{font-size:clamp(2.7rem,13vw,3.4rem)}
   .facts li{font-size:.86rem}
   .hero__label .etk__band{justify-content:flex-end}
@@ -135,14 +137,14 @@ h1,h2,h3,h4{margin:0;text-wrap:balance}
 }
 
 /* load: colour plates slide into register */
-@media (prefers-reduced-motion:no-preference){
+@media (prefers-reduced-motion:no-preference) and (min-width:901px){
   .hero h1{animation:register 1.1s cubic-bezier(.16,1,.3,1) .15s both}
   .hero__label{animation:labelIn 1.1s cubic-bezier(.16,1,.3,1) both}
   .hero__coin{animation:coinIn 1.2s cubic-bezier(.16,1,.3,1) .25s both}
   .stamp{animation:stampIn .6s cubic-bezier(.16,1,.3,1) .9s both}
 }
-@keyframes register{from{text-shadow:.28em .14em 0 var(--red)}to{text-shadow:.045em .03em 0 var(--red)}}
-@keyframes labelIn{from{transform:rotate(7deg) translate(4%,6%)}to{transform:rotate(2deg)}}
+@keyframes register{from{text-shadow:.16em .08em 0 var(--red)}}
+@keyframes labelIn{from{transform:rotate(6deg) scale(.96)}}
 @keyframes coinIn{from{transform:translate(-14%,12%) rotate(-25deg)}to{transform:none}}
 @keyframes stampIn{from{transform:rotate(-30deg) scale(1.6)}to{transform:rotate(-12deg) scale(1)}}
 
@@ -295,6 +297,58 @@ h1,h2,h3,h4{margin:0;text-wrap:balance}
 .paylogos img{height:24px;width:auto;max-width:76px;object-fit:contain}
 @media (max-width:900px){.final__in{grid-template-columns:1fr}}
 
+/* ---------- order form: PRL car voucher (talon) ---------- */
+.order{background:var(--blue-deep);padding:clamp(56px,7vw,96px) 0;position:relative}
+.order::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 1px 1px,rgba(255,255,255,.06) 1.1px,transparent 1.5px) 0 0/9px 9px}
+.talon{position:relative;display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);background:var(--card);border:3px solid var(--ink);border-radius:6px;box-shadow:0 30px 60px -20px rgba(0,0,0,.6)}
+.talon__stub{position:relative;padding:clamp(22px,3vw,40px);border-right:3px dashed var(--ink);background:var(--mustard);border-radius:4px 0 0 4px}
+.talon__stub::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 1px 1px,rgba(22,19,15,.09) 1.1px,transparent 1.5px) 0 0/8px 8px;pointer-events:none}
+.talon__kind{position:relative;display:inline-block;margin:0 0 14px;padding:4px 12px;border:3px solid var(--red);color:var(--red);font-family:var(--display);font-weight:900;font-stretch:125%;font-size:1.05rem;text-transform:uppercase;letter-spacing:.06em;transform:rotate(-3deg);border-radius:4px}
+.talon__stub h2{position:relative;font-size:clamp(2rem,3.6vw,3rem);margin-bottom:.4em}
+.talon__coin{position:relative;display:flex;align-items:center;gap:16px;margin:0 0 18px}
+.talon__coin img{width:110px;flex:none;filter:drop-shadow(0 10px 10px rgba(0,0,0,.35))}
+.talon__coin b{display:block;font-family:var(--display);font-weight:900;font-stretch:110%;font-size:3.2rem;line-height:.9;color:var(--red);text-shadow:.04em .03em 0 var(--ink)}
+.talon__coin span{font-weight:600;font-size:.98rem;line-height:1.35}
+.talon__decl{position:relative;font-size:.9rem;line-height:1.5;margin:0;padding-top:14px;border-top:2px solid rgba(22,19,15,.3)}
+.talon__form{padding:clamp(22px,3vw,40px);min-width:0}
+.talon__form h3{font-family:var(--display);font-weight:900;font-stretch:118%;font-size:1.25rem;text-transform:uppercase;margin:0 0 14px}
+.fgrid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:12px 14px}
+.f{grid-column:span 6;display:flex;flex-direction:column;gap:5px;min-width:0}
+.f--3{grid-column:span 3}.f--4{grid-column:span 4}.f--2{grid-column:span 2}.f--1{grid-column:span 1}
+.f label{font:700 .78rem/1.2 var(--body);letter-spacing:.05em;text-transform:uppercase;color:#4a3f2e;white-space:nowrap}
+.f input{width:100%;min-height:52px;padding:10px 12px;background:#fffaf0;border:2px solid var(--ink);border-radius:4px;font:500 1.05rem/1.2 var(--body);color:var(--ink);caret-color:var(--red);transition:border-color .15s,box-shadow .15s}
+.f input::placeholder{color:#8c7f68}
+.f input:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px rgba(28,61,140,.25)}
+.f input[aria-invalid="true"]{border-color:var(--red);box-shadow:0 0 0 3px rgba(214,49,29,.18)}
+.f__err{margin:0;font-size:.85rem;font-weight:600;color:var(--red-deep)}
+.pay{border:0;margin:22px 0 0;padding:0;display:grid;gap:10px;min-width:0}
+.pay legend{font-family:var(--display);font-weight:900;font-stretch:118%;font-size:1.25rem;text-transform:uppercase;margin-bottom:12px;padding:0}
+.pay__opt{display:grid;grid-template-columns:24px 1fr auto;gap:12px;align-items:center;padding:13px 15px;background:#fffaf0;border:2px solid var(--ink);border-radius:4px;cursor:pointer;transition:background-color .15s,box-shadow .15s}
+.pay__opt input{width:22px;height:22px;margin:0;accent-color:var(--red)}
+.pay__opt b{display:block;font-size:1rem}
+.pay__opt small{display:block;font-size:.88rem;color:#5a4d38;line-height:1.35}
+.pay__opt small strong{color:var(--red-deep)}
+.pay__price{font-weight:700;font-variant-numeric:tabular-nums;white-space:nowrap}
+.pay__opt.is-on{background:#fff;box-shadow:inset 0 0 0 2px var(--red),0 6px 14px -6px rgba(0,0,0,.25)}
+.pay__opt--set.is-on{background:#fff4d6}
+.sum{margin:20px 0 0;padding:14px 16px;border:2px dashed var(--ink);border-radius:4px;background:#fffaf0}
+.sum__row,.sum__total{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:5px 0;font-size:.96rem;font-variant-numeric:tabular-nums}
+.sum__row span:last-child{white-space:nowrap}
+.sum__row s{color:#8c7f68;margin-right:8px}
+.sum__free{font-weight:700;color:#2f7a52}
+.sum__total{margin-top:6px;padding-top:10px;border-top:2px solid var(--ink);font-weight:700;font-size:1.05rem}
+.sum__total b{font-family:var(--display);font-weight:900;font-stretch:110%;font-size:1.6rem;line-height:1;color:var(--red);white-space:nowrap}
+.consent{display:grid;grid-template-columns:24px 1fr;gap:12px;align-items:start;margin:18px 0 0;font-size:.93rem;line-height:1.45;cursor:pointer}
+.consent input{width:22px;height:22px;margin:1px 0 0;accent-color:var(--red)}
+.consent a{color:var(--blue);font-weight:600}
+.talon__submit{width:100%;margin-top:20px}
+.talon__submit[disabled]{opacity:.7;cursor:progress;transform:none}
+.talon__note{margin:12px 0 0;font-size:.86rem;color:#5a4d38;text-align:center}
+.talon__error{margin:12px 0 0;padding:12px 14px;background:#fde3dc;border:2px solid var(--red);border-radius:4px;font-size:.93rem;font-weight:600;color:var(--red-deep)}
+.talon__error a{color:var(--red-deep)}
+@media (max-width:900px){.talon{grid-template-columns:1fr}.talon__stub{border-right:0;border-bottom:3px dashed var(--ink);border-radius:4px 4px 0 0}}
+@media (max-width:520px){.f--3,.f--4{grid-column:span 6}.f--street{grid-column:span 6}.f--1{grid-column:span 3}.f--zip{grid-column:span 2}.f--city{grid-column:span 4}.talon__coin img{width:84px}.talon__coin b{font-size:2.6rem}.pay__opt{grid-template-columns:22px 1fr}.pay__price{grid-column:2}}
+
 /* ---------- footer ---------- */
 .foot{background:var(--ink);color:#cbbfa6;padding:56px 0 110px;font-size:.92rem;border-top:4px solid var(--mustard)}
 .foot__grid{display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr;gap:32px}
@@ -344,7 +398,7 @@ h1,h2,h3,h4{margin:0;text-wrap:balance}
     <a class="top__logo" href="https://azaurum.pl/" aria-label="AZ Aurum — strona główna"><img src="img/logo-white.png" alt="AZ Aurum — Numizmatyka Adam Zieliński" width="650" height="200"></a>
     <div class="top__right">
       <a class="top__tel" href="tel:+48784622333"><svg aria-hidden="true"><use href="#i-phone"/></svg><span>784&nbsp;622&nbsp;333<small>pon–pt, 9:00–17:00</small></span></a>
-      <a class="btn" href="https://azaurum.pl/kolekcja-classic-auto-legendarne-auta-prl-u,3,2731,1481">Zamów Malucha</a>
+      <a class="btn" href="#zamowienie">Zamów Malucha</a>
     </div>
   </div>
 </header>
@@ -362,7 +416,7 @@ h1,h2,h3,h4{margin:0;text-wrap:balance}
           <div class="price__side"><b>cena specjalna na&nbsp;start</b>kolejne medale 149&nbsp;zł <s>169&nbsp;zł</s></div>
         </div>
       </div>
-      <a class="btn btn--big" href="https://azaurum.pl/kolekcja-classic-auto-legendarne-auta-prl-u,3,2731,1481">Zamawiam Malucha za&nbsp;69&nbsp;zł<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      <a class="btn btn--big" href="#zamowienie">Zamawiam Malucha za&nbsp;69&nbsp;zł<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
       <ul class="facts">
         <li><svg aria-hidden="true"><use href="#i-gold"/></svg>platerowany czystym złotem</li>
         <li><svg aria-hidden="true"><use href="#i-scale"/></svg>20&nbsp;g · 40&nbsp;mm</li>
@@ -388,6 +442,57 @@ h1,h2,h3,h4{margin:0;text-wrap:balance}
     <span>Bez loterii</span>
   </div>
 </div>
+
+<section class="order" id="zamowienie" aria-labelledby="h-order">
+  <div class="wrap">
+    <div class="talon order-page">
+      <input type="hidden" name="__csrf" value="">
+      <input type="hidden" name="__action" value="Cart/Add">
+      <input type="hidden" name="after-adding-to-cart" value="1">
+      <input type="hidden" name="main-url" value="https://azaurum.pl/">
+      <input type="hidden" name="go-to-cart" value="zamowienie,4">
+      <input type="hidden" name="quantity" value="1">
+      <div class="talon__stub">
+        <p class="talon__kind">Talon</p>
+        <h2 id="h-order" class="disp reg--blue">Odbierz swojego Malucha</h2>
+        <div class="talon__coin"><img src="img/fiat.webp" alt="Medal Fiat 126p" width="480" height="480" loading="lazy"><div><b id="o-price">69&nbsp;zł</b><span id="o-what">pierwszy medal kolekcji Classic Auto</span></div></div>
+        <p class="talon__decl" id="o-decl">Kupując medal „Fiat 126p” w&nbsp;cenie specjalnej 69&nbsp;zł, jednocześnie rozpoczynam kolekcję Classic Auto. Kolejne 11 medali otrzymam raz w&nbsp;miesiącu, każdy w&nbsp;gwarantowanej cenie 149&nbsp;zł, wraz z&nbsp;rachunkiem do opłacenia. Koszt pakowania i&nbsp;wysyłki to 14,99&nbsp;zł. Kolekcję mogę przerwać w&nbsp;dowolnym momencie, a&nbsp;na każdy medal mam 14 dni do namysłu.</p>
+      </div>
+      <form class="talon__form" id="o-form" novalidate data-product-link="https://azaurum.pl/kolekcja-classic-auto-legendarne-auta-prl-u,3,2731,1481" data-set-link="https://azaurum.pl/kolekcja-classic-auto-legendarne-auta-prl-u,3,2731,1518" aria-label="Zamówienie medalu Fiat 126p">
+        <h3>Dane do wysyłki</h3>
+        <div class="fgrid">
+          <div class="f f--3"><label for="o-first">Imię</label><input id="o-first" name="firstName" autocomplete="given-name" required aria-describedby="o-first-e"><p class="f__err" id="o-first-e" hidden></p></div>
+          <div class="f f--3"><label for="o-last">Nazwisko</label><input id="o-last" name="lastName" autocomplete="family-name" required aria-describedby="o-last-e"><p class="f__err" id="o-last-e" hidden></p></div>
+          <div class="f f--4 f--street"><label for="o-street">Ulica</label><input id="o-street" name="street" autocomplete="address-line1" required aria-describedby="o-street-e"><p class="f__err" id="o-street-e" hidden></p></div>
+          <div class="f f--1"><label for="o-no">Nr domu</label><input id="o-no" name="streetNo" autocomplete="off" required aria-describedby="o-no-e"><p class="f__err" id="o-no-e" hidden></p></div>
+          <div class="f f--1"><label for="o-apt">Lokal</label><input id="o-apt" name="unitNo" autocomplete="off"></div>
+          <div class="f f--2 f--zip"><label for="o-zip">Kod</label><input id="o-zip" name="zipCode" inputmode="numeric" maxlength="6" placeholder="00-000" autocomplete="postal-code" required aria-describedby="o-zip-e"><p class="f__err" id="o-zip-e" hidden></p></div>
+          <div class="f f--4 f--city"><label for="o-city">Miejscowość</label><input id="o-city" name="city" autocomplete="address-level2" required aria-describedby="o-city-e"><p class="f__err" id="o-city-e" hidden></p></div>
+          <div class="f f--3"><label for="o-email">E-mail</label><input id="o-email" name="email" type="email" inputmode="email" autocomplete="email" required aria-describedby="o-email-e"><p class="f__err" id="o-email-e" hidden></p></div>
+          <div class="f f--3"><label for="o-phone">Telefon</label><input id="o-phone" name="phoneNo" type="tel" inputmode="tel" autocomplete="tel" required aria-describedby="o-phone-e"><p class="f__err" id="o-phone-e" hidden></p></div>
+        </div>
+        <fieldset class="pay">
+          <legend>Sposób płatności</legend>
+          <label class="pay__opt is-on"><input type="radio" name="payment" value="22" data-fee="0" checked><span><b>Płatność online</b><small>BLIK, karta, szybki przelew (PayU)</small></span><span class="pay__price">0,00&nbsp;zł</span></label>
+          <label class="pay__opt"><input type="radio" name="payment" value="27" data-fee="7.99"><span><b>Za pobraniem</b><small>Gotówką lub kartą u&nbsp;kuriera</small></span><span class="pay__price">+7,99&nbsp;zł</span></label>
+          <label class="pay__opt pay__opt--set"><input type="radio" name="payment" value="set" data-fee="0"><span><b>Cały zestaw 12 medali od razu</b><small>Wszystkie auta w&nbsp;jednej przesyłce za <strong>1090&nbsp;zł</strong>, rabat 600&nbsp;zł</small></span></label>
+        </fieldset>
+        <div class="sum" aria-live="polite">
+          <div class="sum__row"><span id="s-name">Medal „Fiat 126p”, Classic Auto</span><span id="s-price">69,00&nbsp;zł</span></div>
+          <div class="sum__row"><span>Pakowanie i&nbsp;wysyłka</span><span>14,99&nbsp;zł</span></div>
+          <div class="sum__row" id="s-cod" hidden><span>Płatność za pobraniem</span><span>7,99&nbsp;zł</span></div>
+          <div class="sum__row"><span>Certyfikat i&nbsp;folder kolekcjonerski</span><span class="sum__free">Gratis</span></div>
+          <div class="sum__total"><span>Razem do zapłaty</span><b id="s-total">83,99&nbsp;zł</b></div>
+        </div>
+        <label class="consent"><input type="checkbox" name="consent" required aria-describedby="o-consent-e"><span>Zgadzam się z&nbsp;<a href="https://azaurum.pl/ogolne_warunki_umowy_sprzedazy,28" target="_blank" rel="noopener">Ogólnymi Warunkami</a> i&nbsp;zapoznałem się z&nbsp;<a href="https://azaurum.pl/polityka-prywatnosci,13" target="_blank" rel="noopener">Polityką prywatności</a> AZ Aurum.</span></label>
+        <p class="f__err" id="o-consent-e" hidden></p>
+        <button type="submit" class="btn btn--big btn--red talon__submit"><span class="talon__submit-t">Zamawiam i&nbsp;przechodzę do podsumowania</span></button>
+        <p class="talon__note">Zamówienie złożysz dopiero po potwierdzeniu w&nbsp;następnym kroku.</p>
+        <p class="talon__error" id="o-error" role="alert" hidden></p>
+      </form>
+    </div>
+  </div>
+</section>
 
 <section class="story" aria-labelledby="h-story">
   <div class="wrap">
@@ -429,7 +534,7 @@ h1,h2,h3,h4{margin:0;text-wrap:balance}
           <dt>W&nbsp;zestawie</dt><dd>certyfikat autentyczności</dd>
         </dl>
       </div>
-      <a class="btn btn--big" href="https://azaurum.pl/kolekcja-classic-auto-legendarne-auta-prl-u,3,2731,1481">Zamawiam za&nbsp;69&nbsp;zł<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      <a class="btn btn--big" href="#zamowienie">Zamawiam za&nbsp;69&nbsp;zł<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
     </div>
   </div>
 </section>
@@ -455,7 +560,7 @@ h1,h2,h3,h4{margin:0;text-wrap:balance}
       <li class="car c-red"><div class="car__field"><img src="img/trabant.webp" alt="Medal Trabant" width="480" height="480" loading="lazy"></div><div class="car__name">Trabant<span class="car__nick">Mydelniczka</span></div><div class="car__meta"><span>Co miesiąc</span><b>149&nbsp;zł</b></div></li>
     </ol>
     <div class="series__cta">
-      <a class="btn btn--big" href="https://azaurum.pl/kolekcja-classic-auto-legendarne-auta-prl-u,3,2731,1481">Zaczynam od Malucha<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      <a class="btn btn--big" href="#zamowienie">Zaczynam od Malucha<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
       <p>Kolekcję możesz przerwać w&nbsp;dowolnym momencie.</p>
     </div>
   </div>
@@ -516,7 +621,7 @@ h1,h2,h3,h4{margin:0;text-wrap:balance}
         <img src="img/fiat.webp" alt="" width="480" height="480" loading="lazy">
         <p><b>69&nbsp;zł</b>za pierwszy medal, Fiat 126p. Kolejne po 149&nbsp;zł zamiast 169&nbsp;zł.</p>
       </div>
-      <a class="btn btn--big btn--ink" href="https://azaurum.pl/kolekcja-classic-auto-legendarne-auta-prl-u,3,2731,1481">Zamawiam Malucha za&nbsp;69&nbsp;zł<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      <a class="btn btn--big btn--ink" href="#zamowienie">Zamawiam Malucha za&nbsp;69&nbsp;zł<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
       <p class="final__phone">Wolisz telefonicznie? Zadzwoń: <a class="nb" href="tel:+48784622333">784&nbsp;622&nbsp;333</a> (pon–pt, 9:00–17:00).</p>
       <ul class="paylogos" aria-label="Metody płatności">
         <li><img src="img/pay-tpay.png" alt="Tpay" loading="lazy"></li>
@@ -592,20 +697,106 @@ h1,h2,h3,h4{margin:0;text-wrap:balance}
 <div class="bar" id="bar">
   <div class="wrap bar__in">
     <div class="bar__price"><img src="img/fiat.webp" alt="" width="48" height="48"><div><b>69&nbsp;zł</b><br><span>Fiat 126p · Classic Auto</span></div></div>
-    <a class="btn" href="https://azaurum.pl/kolekcja-classic-auto-legendarne-auta-prl-u,3,2731,1481" tabindex="-1">Zamawiam</a>
+    <a class="btn" href="#zamowienie" tabindex="-1">Zamawiam</a>
   </div>
 </div>
 
 <script>
 (function(){
-  var bar=document.getElementById('bar'),hero=document.querySelector('.hero'),fin=document.querySelector('.final');
-  if(!('IntersectionObserver' in window))return;
-  var heroVis=true,finVis=false;
-  function upd(){var on=!heroVis&&!finVis;bar.classList.toggle('is-on',on);bar.querySelector('a').tabIndex=on?0:-1;bar.setAttribute('aria-hidden',on?'false':'true');}
-  new IntersectionObserver(function(e){heroVis=e[0].isIntersecting;upd();}).observe(hero);
-  new IntersectionObserver(function(e){finVis=e[0].isIntersecting;upd();}).observe(fin);
-  upd();
+  var bar=document.getElementById('bar'),els=[document.querySelector('.hero'),document.getElementById('zamowienie'),document.querySelector('.final')],a=bar.querySelector('a'),t=0;
+  function vis(el){var r=el.getBoundingClientRect();return r.bottom>0&&r.top<innerHeight;}
+  function upd(){t=0;var on=!els.some(vis);bar.classList.toggle('is-on',on);a.tabIndex=on?0:-1;bar.setAttribute('aria-hidden',on?'false':'true');}
+  addEventListener('scroll',function(){if(!t)t=requestAnimationFrame(upd);},{passive:true});addEventListener('resize',upd);upd();
 })();
+</script>
+<script>
+/* Formularz zamówienia. Na azaurum.pl odtwarza kroki koszyka Comarch e-Sklep (jak LP 10 Przykazań):
+   Cart/Add -> StepNext -> DeliveryChange -> StepNext -> DeliveryAddressUpdate -> StepNext -> zamowienie,4.
+   Poza domeną sklepu (np. GitHub Pages) przeglądarka blokuje te zapytania, więc po walidacji przekierowuje do karty produktu. */
+(function(){
+  var form=document.getElementById('o-form'); if(!form) return;
+  var page=form.closest('.order-page');
+  var errBox=document.getElementById('o-error');
+  var btn=form.querySelector('.talon__submit'), btnT=btn.querySelector('.talon__submit-t'), idle=btnT.innerHTML;
+  var TPL='static-elements/cart/cart.html', busy=false, SHIP=14.99;
+  var onShop=/(^|\.)azaurum\.pl$/.test(location.hostname);
+  function pin(n){var el=page.querySelector('input[name="'+n+'"]');return el?el.value:'';}
+  function orderUrl(){return pin('main-url')+pin('go-to-cart');}
+  function csrf(){return (typeof __CSRF!=='undefined'&&__CSRF)?__CSRF:pin('__csrf');}
+  function money(n){return n.toFixed(2).replace('.',',')+' zł';}
+
+  var sName=document.getElementById('s-name'), sPrice=document.getElementById('s-price'), sCod=document.getElementById('s-cod'), sTotal=document.getElementById('s-total');
+  var oPrice=document.getElementById('o-price'), oWhat=document.getElementById('o-what'), oDecl=document.getElementById('o-decl');
+  var SINGLE={name:sName.textContent, what:oWhat.textContent, decl:oDecl.innerHTML, price:69};
+  var SET={name:'Zestaw 12 medali Classic Auto', what:'cały zestaw 12 medali w jednej przesyłce', decl:'Zamawiam cały zestaw kolekcji Classic Auto – wszystkie 12 medali za 1090&nbsp;zł (rabat 600&nbsp;zł), wysłane w&nbsp;jednej przesyłce.', price:1090};
+  function isSet(){return form.querySelector('input[name="payment"]:checked').value==='set';}
+  function sync(){
+    var sel=form.querySelector('input[name="payment"]:checked');
+    [].forEach.call(form.querySelectorAll('.pay__opt'),function(l){l.classList.toggle('is-on',l.contains(sel));});
+    var d=isSet()?SET:SINGLE, fee=parseFloat(sel.getAttribute('data-fee'))||0;
+    sCod.hidden=!fee; sName.textContent=d.name; sPrice.textContent=money(d.price);
+    oPrice.textContent=money(d.price).replace(',00',''); oWhat.textContent=d.what; oDecl.innerHTML=d.decl;
+    sTotal.textContent=money(d.price+SHIP+fee);
+  }
+  var zip=document.getElementById('o-zip');
+  zip.addEventListener('input',function(){var d=zip.value.replace(/\D/g,'').slice(0,5);zip.value=d.length>2?d.slice(0,2)+'-'+d.slice(2):d;});
+  function normPhone(v){var d=v.replace(/\D/g,'');if(d.length===11&&d.indexOf('48')===0)d=d.slice(2);return d;}
+  var rules={
+    firstName:function(v){return v.trim().length>=2?'':'Podaj imię.';},
+    lastName:function(v){return v.trim().length>=2?'':'Podaj nazwisko.';},
+    street:function(v){return v.trim().length>=2?'':'Podaj ulicę.';},
+    streetNo:function(v){return v.trim()?'':'Podaj numer domu.';},
+    zipCode:function(v){return /^\d{2}-\d{3}$/.test(v.trim())?'':'Podaj kod w formacie 00-000.';},
+    city:function(v){return v.trim().length>=2?'':'Podaj miejscowość.';},
+    email:function(v){return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim())?'':'Podaj poprawny adres e-mail.';},
+    phoneNo:function(v){return normPhone(v).length===9?'':'Podaj numer telefonu (9 cyfr).';},
+    consent:function(v){return v?'':'Zaznacz zgodę, aby kontynuować.';}
+  };
+  var order=['firstName','lastName','street','streetNo','zipCode','city','email','phoneNo','consent'];
+  function setErr(el,msg){var b=document.getElementById(el.getAttribute('aria-describedby'));el.setAttribute('aria-invalid',msg?'true':'false');if(b){b.textContent=msg;b.hidden=!msg;}}
+  function check(el){var m=rules[el.name](el.type==='checkbox'?el.checked:el.value);setErr(el,m);return !m;}
+  form.addEventListener('change',function(e){if(e.target.name==='payment')sync();if(e.target.name==='consent'&&e.target.getAttribute('aria-invalid')==='true')check(e.target);});
+  form.addEventListener('input',function(e){if(rules[e.target.name]&&e.target.getAttribute('aria-invalid')==='true')check(e.target);});
+  form.addEventListener('focusout',function(e){if(rules[e.target.name]&&e.target.type!=='checkbox'&&e.target.value)check(e.target);});
+  function showError(msg){errBox.textContent=msg+' ';var a=document.createElement('a');a.href=form.getAttribute('data-product-link');a.textContent='Zamów bezpośrednio w sklepie.';errBox.appendChild(a);errBox.hidden=false;}
+  function setBusy(on){busy=on;btn.disabled=on;btn.setAttribute('aria-busy',on?'true':'false');btnT.innerHTML=on?'Przekazuję zamówienie…':idle;}
+  function post(url,pairs){var b=new URLSearchParams();pairs.forEach(function(p){b.append(p[0],p[1]);});
+    return fetch(url,{method:'POST',credentials:'same-origin',headers:{'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8','X-Requested-With':'XMLHttpRequest'},body:b}).then(function(r){return r.json();}).then(function(j){return j.action||{};});}
+  function product(link){return fetch(link+(link.indexOf('?')>-1?'&':'?')+'__collection=product-details',{credentials:'same-origin',headers:{'X-Requested-With':'XMLHttpRequest'}}).then(function(r){return r.json();}).then(function(j){
+    var p=j.collection.Product,pairs=[];(p.Units||[]).forEach(function(u){if((u.Default||u.Id==null)&&u.Id!=null)pairs.push(['unitId',u.Id]);});
+    pairs.push(['basic-unit-ratio',p.BasicUnitRatio],['productId',p.Id],['price',p.Price]);return {id:p.Id,price:p.Price,name:p.Name,pairs:pairs};});}
+  function basePairs(){var a=[];[].forEach.call(page.children,function(n){if(n.tagName==='INPUT'&&n.name)a.push([n.name,n.name==='__csrf'?csrf():n.value]);});return a;}
+  function track(sp){try{
+    if(window.dataLayer)dataLayer.push({event:'addToCart',ecommerce:{add:{products:[{id:sp.id,name:sp.name,price:sp.price,quantity:'1'}]}}});
+    if(typeof fbq==='function')fbq('track','AddToCart',{content_ids:sp.id,content_name:sp.name,value:Number(String(sp.price).replace(',','.')),currency:'PLN',quantity:1,content_type:'product'});
+  }catch(e){}}
+  function run(){
+    var wantsSet=isSet(), link=form.getAttribute(wantsSet?'data-set-link':'data-product-link');
+    if(!onShop){ setBusy(true); location.href=link; return; }
+    setBusy(true);
+    var url=orderUrl(), f=form.elements;
+    var payment=wantsSet?'22':form.querySelector('input[name="payment"]:checked').value;
+    var addr=[['__csrf',csrf()],['email',f.email.value.trim()],['name',f.firstName.value.trim()+' '+f.lastName.value.trim()],['zipCode',f.zipCode.value.trim()],['city',f.city.value.trim()],['street',f.street.value.trim()],['streetNo',f.streetNo.value.trim()],['unitNo',f.unitNo.value.trim()],['countryCode','Polska'],['phoneNo',normPhone(f.phoneNo.value)],['__action','Order/DeliveryAddressUpdate']];
+    function act(a,extra){return post(url,[['__csrf',csrf()],['__action',a],['__template',TPL]].concat(extra||[]));}
+    product(link).then(function(sp){
+      return post(location.href.split('#')[0],basePairs().concat(sp.pairs)).then(function(a){
+        if(!a.Result)throw new Error(a.Message||'');
+        track(sp);
+        return act('Order/StepNext').then(function(){return act('Order/DeliveryChange',[['id',payment]]);})
+          .then(function(){return act('Order/StepNext');}).then(function(){return post(url,addr);})
+          .then(function(){return act('Order/StepNext');}).catch(function(){})
+          .then(function(){location.href=url;});
+      });
+    }).catch(function(err){showError((err&&err.message)||'Nie udało się przekazać zamówienia. Spróbuj ponownie za chwilę.');setBusy(false);});
+  }
+  form.addEventListener('submit',function(e){
+    e.preventDefault(); if(busy)return; errBox.hidden=true;
+    var first=null; order.forEach(function(n){var el=form.elements[n];if(!check(el)&&!first)first=el;});
+    if(first){first.focus();return;} run();
+  });
+  sync();
+})();
+
 </script>
 </body>
 </html>
